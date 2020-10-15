@@ -776,7 +776,7 @@ $(document).ready(function(){
                     ajaxError();
                 }
                 if (res.success){
-                    //crear divs de comentarioss
+                    // crear divs de comentarioss
                     $("#divFormComments").empty();
                     if (res.data.length!=0){
                         for (var x of res.data){
@@ -786,6 +786,8 @@ $(document).ready(function(){
                     else{
                         $("#divFormComments").append('<div class="comment-content">No ha sido agregada ninguna observación.</div>');
                     }
+                    /////////
+
                     $("#mod_see_form_comments").modal("show");
                 }
                 else{
@@ -2204,7 +2206,29 @@ $(document).ready(function(){
 
     $("#mod_publishing_history").on('hidden.bs.modal',function(){
         $("#divPublishingHistory").empty();
-    })
+    });
+
+    // $("#btnOpenEditor").click(function(){
+    //     $("#mod_reply_comment").modal("show");
+    // });
+
+    $("#btnOpenNewCommentEditor").click(function(){
+        $("#divFormComments").append('<div id="editor" style="width:100%; height:100px;"></div><button class="btn btn-primary pull-right">Guardar</button>');
+        var toolbarOptions=[
+            ['bold','italic','underline','strike'],
+            [{'list':'ordered'},{'list':'bullet'}],
+            [{ 'indent': '-1'}, { 'indent': '+1' }],
+            [{ 'color': ['black','white','yellow','red','blue','green','gray'] }, { 'background': ['black','white','yellow','red','blue','green'] }],
+        ]
+        var quill = new Quill('#editor', {
+            modules:{
+                toolbar:toolbarOptions
+            },
+            theme: 'snow'
+        });
+
+    });
+
 
 });
 

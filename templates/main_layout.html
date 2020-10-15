@@ -22,6 +22,10 @@
         <link rel="stylesheet" href="/static/jquery-folding-tree/css/file-explore.css"/>
         <link rel="stylesheet" href="/static/css/_treepanel.css"/>
         <link rel="stylesheet" href="/static/css/notifications.css"/>
+        <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+        <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
         <title>EasyTask</title>
     </head>
     <body>
@@ -56,6 +60,7 @@
         {% include 'modal/edit_project_info.html' %}
         {% include 'modal/sel_form_to_clone.html' %}
         {% include 'modal/publishing_history.html' %}
+        {% include 'modal/reply_comment.html' %}
 
 
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -75,6 +80,10 @@
         <script src="/static/js/project.js"></script>
         <script src="/static/jquery-folding-tree/js/file-explore.js"></script>
         <script src="/static/js/treepanel.js"></script>
+        <script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
+        <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
     </body>
 
 </html>
