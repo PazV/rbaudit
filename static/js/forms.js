@@ -1533,7 +1533,7 @@ $(document).ready(function(){
         $.ajax({
             url:'/project/getSettingsForEditing',
             type:'POST',
-            data:JSON.stringify({'form_id':me.user_info['form_id'],'user_id':me.user_info['user_id'],'project_id':me.user_info['project_id']}),
+            data:JSON.stringify({'form_id':me.user_info['form_id'],'user_id':me.user_info['user_id'],'project_id':me.user_info['project_id'],'workspace_id':me.user_info['workspace_id']}),
             success:function(response){
                 try{
                     var res=JSON.parse(response);

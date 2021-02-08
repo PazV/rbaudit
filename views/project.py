@@ -3077,6 +3077,7 @@ def getSettingsForEditing():
         response['success']=False
         if request.method=='POST':
             valid,data=GF.getDict(request.form,'post')
+            
             if valid:
                 success,allowed=GF.checkPermission({'user_id':data['user_id'],'permission':'create_forms'})
                 if success:
@@ -3090,7 +3091,18 @@ def getSettingsForEditing():
                             union
                             select partner as user from project.project where project_id=%s and partner=%s
                         """%(data['form_id'],data['user_id'],data['form_id'],data['user_id'],data['project_id'],data['user_id'],data['project_id'],data['user_id'])).dictresult()
-                        if allowed_users!=[]:
+
+                        consultant=db.query("""
+                            select consultants from system.workspace where workspace_id=%s
+                        """%data['workspace_id']).dictresult()
+                        consult_list=[]
+                        consult_match=False
+                        if consultant!=[]:
+                            consult_list=consultant[0]['consultants'].split(",")
+                            if str(data['user_id']) in consult_list:
+                                consult_match=True
+
+                        if allowed_users!=[] or consult_match==True:
                             settings=db.query("""
                                 select b.form_id, b.name, b.status_id,
                                 b.columns_number,
