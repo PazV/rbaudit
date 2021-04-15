@@ -18,7 +18,8 @@ def create_app(test_config=None):
     app.debug=True
     formatter = logging.Formatter(
         "[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
-    handler = RotatingFileHandler('/var/log/rbaudit/audlog.log', maxBytes=10000000, backupCount=5)
+    handler = RotatingFileHandler('/var/log/old_rbaudit/audlog.log', maxBytes=10000000, backupCount=5)
+    # handler = RotatingFileHandler('/var/log/rbaudit/audlog.log', maxBytes=10000000, backupCount=5)
     handler.setFormatter(formatter)
     handler.setLevel(logging.INFO)
     app.logger.addHandler(handler)
